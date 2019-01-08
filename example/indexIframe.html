@@ -9,14 +9,19 @@
     <script src="../node_modules/postal/lib/postal.js"></script>
     <script src="../node_modules/postal.federation/lib/postal.federation.js"></script>
     <script src="../lib/postal.xframe.js"></script>
-    <script src="main.js"></script>
+    <script src="mainIframe.js"></script>
 </head>
 <body>
 <div>
-    <iframe id="indexIframe" src="indexIframe.html" height="480" width="500"></iframe>
+    <iframe id="iframe1" src="iframe.html"></iframe>
+    <iframe id="iframe2" src="iframe2.html"></iframe>
 </div>
 <div>
-    <input type="button" value="Send Message" id="msg1">
+    <input type="button" value="Send Message IFrame" id="msg1">
+	<input type="button" value="Send Message Parant" id="msg2">
+    <input type="button" value="Disconnect iframe 1" id="disconnect1">
+    <input type="button" value="Disconnect iframe 2" id="disconnect2">
+    <input type="button" value="Clear" id="clear">
 </div>
 <div id="msgs"></div>
 <script type="text/javascript">

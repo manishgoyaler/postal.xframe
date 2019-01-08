@@ -3,9 +3,7 @@
 postal.instanceId( "parent" );
 
 postal.fedx.addFilter( [
-	{ channel: 'postal', topic: '#', direction: 'out' },
-	{ channel: 'iframez', topic: '#', direction: 'out' },
-	{ channel: 'parentz', topic: '#', direction: 'in' }
+	{ channel: 'postal', topic: '#', direction: 'both' }
 ] );
 postal.addWireTap( function( d, e ) {
 	console.log( "ID: " + postal.instanceId() + " " + JSON.stringify( e, null, 4 ) );
@@ -14,7 +12,7 @@ postal.addWireTap( function( d, e ) {
 $( function() {
 
 	postal.subscribe( {
-		channel: "parentz",
+		channel: "postal",
 		topic: "#",
 		callback: function( d, e ) {
 			$( "#msgs" ).append( "<div><pre>" + JSON.stringify( e, null, 4 ) + "</pre></div>" );
@@ -23,33 +21,12 @@ $( function() {
 
 	$( "#msg1" ).on( 'click', function() {
 		postal.publish( {
-			channel: "iframez",
+			channel: "postal",
 			topic: "some.topic",
-			data: "This message will appear in an iframe"
+			data: "This message will appear in an iframe postal"
 		} );
+
 	} );
 
-	// disconnecting via passing the content window as a target
-	$( "#disconnect1" ).on( "click", function() {
-		postal.fedx.disconnect( {
-			target: document.getElementById( "iframe1" ).contentWindow
-		} );
-	} );
-
-	// disconnecting via passing the instanceId
-	$( "#disconnect2" ).on( "click", function() {
-		postal.fedx.disconnect( {
-			instanceId: "iframe2"
-		} );
-	} );
-
-	// disconnecting via passing the instanceId
-	$( "#clear" ).on( "click", function() {
-		$( "#msgs" ).html( "" );
-		postal.publish( {
-			channel: "iframez",
-			topic: "clear"
-		} );
-	} );
 
 } );
