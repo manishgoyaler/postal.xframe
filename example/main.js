@@ -27,7 +27,8 @@ postal.addWireTap( function( d, e ) {
 
 $( function() {
 
-	if ( typeof Worker !== "undefined" ) {
+	if ( false ) {
+		/*
 		window.werker1 = new Worker( 'worker.js' );
 		window.werker2 = new Worker( 'worker2.js' );
 		werker1.postMessage( "" );
@@ -56,7 +57,7 @@ $( function() {
 			callback: function( d, e ) {
 				$( "#msgs" ).append( "<div><pre>" + JSON.stringify( e, null, 4 ) + "</pre></div>" );
 			}
-		} );
+		} ); */
 	} else {
 		$( "#worker1" ).remove();
 		$( "#worker2" ).remove();

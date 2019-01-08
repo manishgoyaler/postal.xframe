@@ -31,7 +31,6 @@
             { channel: 'postal',    topic: '#', direction: 'in'  },
             { channel: 'iframez',   topic: '#', direction: 'in'  },
             { channel: 'parentz',   topic: '#', direction: 'out' },
-            { channel: 'webworker', topic: '#', direction: 'in'  },
 			{ channel : 'reqres',     topic : '#', direction : 'both'},
 			{ channel : 'postal.request-response', topic : '#', direction : 'both'}
         ]);
@@ -49,14 +48,6 @@
                 }
             }
         });
-
-        postal.subscribe( {
-            channel : "webworker",
-            topic : "#",
-            callback : function ( d, e ) {
-                $( "#msgs" ).append( "<div><pre>" + JSON.stringify( e, null, 4 ) + "</pre></div>" );
-            }
-        } );
 
         $(function() {
 
